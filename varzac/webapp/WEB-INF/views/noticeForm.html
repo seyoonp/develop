@@ -1,0 +1,18 @@
+<html xmlns:th="http://www.thymeleaf.org" 
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout/default">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<section layout:fragment="content">
+		<form name="hellForm" action="/registHello" method="post">
+			제목 : <input type="text" name="title" id="title" value=""/><br/>	
+			내용 : <textarea name="content" id="content" value=""></textarea><br/>
+			<input type="submit" value="등록" />
+		</form>
+		<th:block th:text="${serverTime}"></th:block>
+	</section>
+</body>
+</html>

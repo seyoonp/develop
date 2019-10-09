@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.varzac.dao.NoticeDao">
+	<select id="searchNotice" resultType="com.varzac.dto.NoticeDto">
+		SELECT 	title
+				, content
+				, ins_id
+				, ins_date
+				, upt_id
+				, upt_date  
+		FROM 	TB_NOTICE
+	</select>
+	
+	<insert id="insertNotice" parameterType="com.varzac.dto.NoticeDto">
+		INSERT INTO TB_NOTICE
+		(
+			title1
+			, content1
+			, ins_id
+			, ins_date
+			, upt_id
+			, upt_date
+		)
+		VALUES
+		(
+			#{title}
+			, #{content}
+			, 'admin'
+			, now()
+			, 'admin'
+			, now()
+		)
+	</insert>
+</mapper>
