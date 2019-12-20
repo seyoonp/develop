@@ -1,10 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<resource th:fragment="resourceFragment">
-	<link href="/static/css/common.css" rel="stylesheet" />
-	<link href="/static/css/layout.css" rel="stylesheet" />
-	<script src="/static/js/jquery-3.4.1.min.js"></script>
-	<script src="/static/js/layout_multiple_slide.js"></script>
-	<script src="/static/js/layout_lnb.js"></script>
-</resource>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head th:fragment="resourceFragment">
+	<script th:src="@{/resources/js/jquery-3.4.1.min.js}"></script>
+</head>
 </html>

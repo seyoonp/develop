@@ -4,8 +4,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>TITLE</title>
-	
-	<resource th:replace="fragments/resource :: resourceFragment" />
+	<head th:replace="fragments/resource :: resourceFragment" />
 </head>
 <body>
 	<div id="wrap">
@@ -15,7 +14,7 @@
 
         <div class="container">
             <!-- lnb -->
-            <header th:replace="fragments/navigation :: navigationFragment" />
+            <div th:replace="fragments/navigation :: navigationFragment" />
             <!--// lnb -->
 
             <!-- contents -->

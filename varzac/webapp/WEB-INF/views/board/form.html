@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout/default">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function fnUploadFile() {
+		var formData = new FormData($('#fileForm')[0]);
+		
+		$.ajax({ 
+			type : "POST" , 
+			enctype : 'multipart/form-data' , 
+			url : '/board/multiUpload', 
+			data : formData , 
+			processData : false , 
+			contentType : false , 
+			cache : false , 
+			success : function (response) { 
+				alert("success"); 
+				console.log(response);
+			}, 
+			error: function (jqXHR) { 
+				alert(jqXHR.responseText);
+			} 
+		});
+			
+	}
+</script>
+<body>
+	<th:block layout:fragment="content">
+		<div style="background-color: #efefef;">
+			<h1>Page Content</h1>
+				<form name="fileForm" id="fileForm" method="post" enctype="multipart/form-data">
+				<input type="file" name="upFile" id="upFile" multiple="multiple"/>
+				<input type="button" name="btnUpload" id="btnUpload" value="업로드" onclick="fnUploadFile();"/>
+			</form>
+		<div>
+	</th:block>
+</body>
+</html>
