@@ -9,7 +9,7 @@ import com.varzac.dao.HelloDao;
 import com.varzac.vo.HelloVo;
 
 @Service
-public class HelloService {
+public class BoardService {
 
 	@Autowired
 	private HelloDao helloDao;

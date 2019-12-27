@@ -5,7 +5,7 @@ public class CodeUtility
 {
 	
 	/** 상품 상태 코드를 코드명으로 조회
-	 *  주문 Pay DTO 와 Map 미 사용 처리위한 넘어온 코드값에 대응되는 코드명으로 조회 
+	 *  주문 Pay VO 와 Map 미 사용 처리위한 넘어온 코드값에 대응되는 코드명으로 조회 
 	 *  @param payMethod
 	 * */
 	public String getApplcationProductStatusName(String applcationProductStatus)
@@ -34,7 +34,7 @@ public class CodeUtility
 	}
 	
 	/** 신청사유 코드를 코드명으로 조회
-	 *  주문 Pay DTO 와 Map 미 사용 처리위한 넘어온 코드값에 대응되는 코드명으로 조회 
+	 *  주문 Pay VO 와 Map 미 사용 처리위한 넘어온 코드값에 대응되는 코드명으로 조회 
 	 *  @param payMethod
 	 * */
 	public String getApplicationReasonName(String applicationReasonCode)

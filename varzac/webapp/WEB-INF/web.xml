@@ -20,6 +20,12 @@
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	
+	<servlet>
+		<servlet-name>initServlce</servlet-name>
+		<servlet-class>com.varzac.servlet.InitServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
 	<servlet-mapping>
 		<servlet-name>dispatcher</servlet-name>
 		<url-pattern>/</url-pattern>
@@ -28,8 +34,7 @@
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
-			classpath*:/spring/root-context.xml
-			classpath*:/spring/jdbc-context.xml
+			classpath*:/spring/*-context.xml
 		</param-value>
 	</context-param>
 

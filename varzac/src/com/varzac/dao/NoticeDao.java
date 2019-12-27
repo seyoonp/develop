@@ -1,26 +1,23 @@
 package com.varzac.dao;
 
 import java.util.List;
-
-import org.apache.ibatis.session.SqlSession;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
-
-import com.varzac.dto.NoticeDto;
+import com.varzac.vo.NoticeVo;
 
 @Repository 
 public interface NoticeDao {
 	
-//	public List<NoticeDto> searchNotice() {
+//	public List<NoticeVO> searchNotice() {
 //		// TODO Auto-generated method stub
 //		return this.sqlSession.selectList("tbNotice.list");
 //	}
 //
-//	public void insertNotice(NoticeDto noticeDto) {
+//	public void insertNotice(NoticeVO noticeVO) {
 //		// TODO Auto-generated method stub
-//		this.sqlSession.insert("tbNotice.list", noticeDto);
+//		this.sqlSession.insert("tbNotice.list", noticeVO);
 //	}
 	
-	public List<NoticeDto> searchNotice();
-	public void insertNotice(NoticeDto noticeDto);
+	public List<NoticeVo> searchNotice();
+	public void insertNotice(NoticeVo noticeVO);
 }

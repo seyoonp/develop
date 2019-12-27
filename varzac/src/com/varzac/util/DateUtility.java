@@ -12,10 +12,14 @@ import javax.servlet.http.HttpSession;
 import org.joda.time.Interval;
 import org.joda.time.Period;
 import org.joda.time.PeriodType;
-
+import org.springframework.beans.factory.annotation.Value;
 
 public class DateUtility
 {
+	
+	@Value("#{config['system.session.attrNameForNowDate']}")
+	private String attrNameForNowDate;
+	
 	/** 몇 달 전 날짜 가져 오기
 	 *  @param mon    개월 수, 해당 개월 수 이전의 날짜를 가져온다.
 	 *  @param format 문자열로 출력할 날짜 형식
@@ -94,17 +98,23 @@ public class DateUtility
 	public Date getNowByHttpSession(HttpSession session)
 	{
 		Date now = null;
-		
-		/*
-		if(session != null && session.getAttribute(Config.getString("system.session.attrNameForNowDate")) != null)
-		{
-			now = (Date)session.getAttribute(Config.getString("system.session.attrNameForNowDate"));
-		}
-		else
-		{
+		if(session != null && session.getAttribute(this.attrNameForNowDate) != null) {
+			now = (Date)session.getAttribute(this.attrNameForNowDate);
+		} else {
 			now = Calendar.getInstance().getTime();
 		}
-		*/
 		return now;
+	}
+	
+	/**
+	 * 포멧팅된 현재시간을 문자열 형태로 리턴
+	 * 
+	 * @param format 포메팅 문자열
+	 * @return 포멧팅된 현재시간을 문자열 형태로 반환 
+	 */
+	public String getCurrentDate(String format) {
+		SimpleDateFormat sdf = new SimpleDateFormat(format);
+    	Date date = new Date();
+    	return sdf.format(date);
 	}
 }

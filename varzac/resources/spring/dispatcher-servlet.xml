@@ -46,7 +46,7 @@
 	<!-- 정적 리소스 매핑 -->
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 	
-	<!-- view resolver를 로드하여 인식되디록 처리 -->
+	<!-- view resolver를 로드하여 인식되도록 처리, 이후  -->
 	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver"> 
 		<property name="order" value="0" />
 	</bean>

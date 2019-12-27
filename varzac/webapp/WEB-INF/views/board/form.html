@@ -32,10 +32,19 @@
 	<th:block layout:fragment="content">
 		<div style="background-color: #efefef;">
 			<h1>Page Content</h1>
-				<form name="fileForm" id="fileForm" method="post" enctype="multipart/form-data">
+			<form name="boardForm" action="/board/registBoard" method="post">
+				제목 : <input type="text" name="title" id="title" value=""/><br/>	
+				내용 : <textarea name="content" id="content" value=""></textarea><br/>
+				<input type="submit" value="등록" />
+			</form>
+			<th:block th:text="${serverTime}"></th:block>
+	
+			<form name="fileForm" id="fileForm" method="post" enctype="multipart/form-data">
 				<input type="file" name="upFile" id="upFile" multiple="multiple"/>
 				<input type="button" name="btnUpload" id="btnUpload" value="업로드" onclick="fnUploadFile();"/>
 			</form>
+			<br/>
+			<a href="/common/fileDownload/1">다운로드</a>
 		<div>
 	</th:block>
 </body>

@@ -2,25 +2,24 @@ package com.varzac.dao;
 
 import java.util.List;
 
-import org.apache.ibatis.session.SqlSession;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
 
-import com.varzac.dto.HelloDto;
+import com.varzac.vo.HelloVo;
 
 @Repository 
 public interface HelloDao {
 	
-//	public List<HelloDto> searchBoard() {
+//	public List<HelloVO> searchBoard() {
 //		// TODO Auto-generated method stub
 //		return this.sqlSession.selectList("tbBoard.list");
 //	}
 //
-//	public void insertBoard(HelloDto helloDto) {
+//	public void insertBoard(HelloVO helloVO) {
 //		// TODO Auto-generated method stub
-//		this.sqlSession.insert("tbBoard.list", helloDto);
+//		this.sqlSession.insert("tbBoard.list", helloVO);
 //	}
-	
-	public List<HelloDto> searchBoard();
-	public void insertBoard(HelloDto helloDto);
+	@Cacheable("board")
+	public List<HelloVo> searchBoard();
+	public void insertBoard(HelloVo helloVO);
 }

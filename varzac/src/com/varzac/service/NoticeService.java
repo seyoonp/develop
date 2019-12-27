@@ -4,12 +4,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.varzac.dao.HelloDao;
 import com.varzac.dao.NoticeDao;
-import com.varzac.dto.HelloDto;
-import com.varzac.dto.NoticeDto;
+import com.varzac.vo.HelloVo;
+import com.varzac.vo.NoticeVo;
 
 @Service
 public class NoticeService {
@@ -20,19 +19,19 @@ public class NoticeService {
 	@Autowired
 	private HelloDao helloDao;
 	
-	public List<NoticeDto> searchNotice() {
+	public List<NoticeVo> searchNotice() {
 		// TODO Auto-generated method stub
 		return noticeDao.searchNotice();
 	}
 
-	public void insertNotice(NoticeDto boardDto) {
+	public void insertNotice(NoticeVo boardVO) {
 		// TODO Auto-generated method stub
-		noticeDao.insertNotice(boardDto);
+		noticeDao.insertNotice(boardVO);
 	}
 	
-	public void insertHelloNotice(HelloDto helloDto, NoticeDto boardDto) {
+	public void insertHelloNotice(HelloVo helloVO, NoticeVo boardVO) {
 		// TODO Auto-generated method stub
-		helloDao.insertBoard(helloDto);
-		noticeDao.insertNotice(boardDto);
+		helloDao.insertBoard(helloVO);
+		noticeDao.insertNotice(boardVO);
 	}
 }
