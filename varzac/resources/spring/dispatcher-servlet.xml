@@ -94,4 +94,23 @@
     		<ref bean="AuthInterceptor"/>
     	</mvc:interceptor>
     </mvc:interceptors>
+    
+    <!-- 접속하는 Device(desktop, mobile, tablet)를 구분 & 접속하는 Device 가 모바일일 경우 m.xxxxx.com 으로 전환 -->
+    <!--
+    <mvc:interceptors>
+  		<bean class="org.springframework.mobile.device.DeviceResolverHandlerInterceptor" /> 
+  		<bean class="org.springframework.mobile.device.switcher.SiteSwitcherHandlerInterceptor" factory-method="standard">
+    		<constructor-arg value="${device.switcher.normal}" />
+    		<constructor-arg value="${device.switcher.mobile}" />
+    		<constructor-arg value="${device.switcher.tablet}" />
+    		<constructor-arg value="${device.switcher.cookie}" />
+		</bean> 		
+	</mvc:interceptors>
+	-->
+	
+	<!-- 접속하는 Device가 모바일/테블릿 기기인 경우 모바일 사이트로 리다이렉션 처리 -->
+	<mvc:interceptors>
+		<bean class="org.springframework.mobile.device.DeviceResolverHandlerInterceptor" />
+		<bean class="com.nbkorea.frm.servlet.SiteSwitcherHandlerInterceptor" />
+	</mvc:interceptors>
 </beans>
