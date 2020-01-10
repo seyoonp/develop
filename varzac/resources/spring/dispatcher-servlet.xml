@@ -76,4 +76,22 @@
     	<property name="characterEncoding" value="UTF-8" />
         <property name="templateEngine" ref="templateEngine" />        
     </bean>
+    
+    <!-- 로그인 인터셉터 설정 -->
+    <bean id="loginInterceptor" class="com.varzac.interceptor.LoginInterceptor"/>
+    <mvc:interceptors>
+    	<mvc:interceptor>
+    		<mvc:mapping path="/login/proc"/>
+    		<ref bean="loginInterceptor"/>
+    	</mvc:interceptor>
+    </mvc:interceptors>
+    
+	<!-- 로그인 권한이 필요한 영역에 대한 인터셉터 설정 -->
+    <bean id="AuthInterceptor" class="com.varzac.interceptor.AuthInterceptor"/>
+    <mvc:interceptors>
+    	<mvc:interceptor>
+    		<mvc:mapping path="/member/info"/>
+    		<ref bean="AuthInterceptor"/>
+    	</mvc:interceptor>
+    </mvc:interceptors>
 </beans>

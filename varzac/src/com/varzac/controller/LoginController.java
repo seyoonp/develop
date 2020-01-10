@@ -10,11 +10,12 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.varzac.service.BoardService;
-import com.varzac.vo.LoginVo;
+import com.varzac.vo.LoginDto;
 import com.varzac.vo.MemberVo;
 
 @Controller
@@ -35,21 +36,42 @@ public class LoginController {
 		return mv;
 	}
 	
-	@RequestMapping("/login/proc")
-	public void proc(LoginVo loginVo, HttpSession httpSession, ModelAndView mv) {
-		
+	@RequestMapping(value = "/login/proc", method = RequestMethod.POST)
+	public void proc(LoginDto loginVo, HttpSession httpSession, Model model) {
+		/*
 		String hashedPwd = BCrypt.hashpw(loginVo.getLoginPwd(), BCrypt.gensalt());
 		loginVo.setLoginPwd(hashedPwd);
-		
-		// MemberVo memberVo = memberService.loginProc();
-		MemberVo memberVo = null;
+		MemberVo memberVo = memberService.loginProc();		
 		if(memberVo == null || !BCrypt.checkpw(loginVo.getLoginPwd(), memberVo.getLoginPwd())) {
 			mv.addObject("result", "FAIL");
 		} else {
 			mv.addObject("memberVo", memberVo);
 			mv.addObject("result", "SUCCESS");
 		}
+		*/
 		
-		mv.setViewName("jsonView");
+		/*
+		String loginPwd = loginVo.getLoginPwd();
+		if(loginPwd == null || loginPwd.equals("1234")) {
+			MemberVo memberVo = new MemberVo();
+			memberVo.setLoginId("sampleId");
+			memberVo.setUserName("sample name");
+			model.addAttribute("memberVo", memberVo);
+			model.addAttribute("result", "00");
+			model.addAttribute("message", "메인 화면으로 이동합니다.");
+		} else {
+			model.addAttribute("result", "01");
+			model.addAttribute("message", "ID 또는 비밀번호가 일치하지 않습니다.");
+		}
+		return "jsonView";
+		*/
+		
+		String loginPwd = loginVo.getLoginPwd();
+		if(loginPwd == null || loginPwd.equals("1234")) {
+			MemberVo memberVo = new MemberVo();
+			memberVo.setLoginId("sampleId");
+			memberVo.setUserName("sample name");
+			model.addAttribute("memberVo", memberVo);
+		}
 	}
 }
