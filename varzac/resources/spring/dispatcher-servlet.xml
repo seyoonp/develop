@@ -111,6 +111,16 @@
 	<!-- 접속하는 Device가 모바일/테블릿 기기인 경우 모바일 사이트로 리다이렉션 처리 -->
 	<mvc:interceptors>
 		<bean class="org.springframework.mobile.device.DeviceResolverHandlerInterceptor" />
-		<bean class="com.nbkorea.frm.servlet.SiteSwitcherHandlerInterceptor" />
+		<bean class="com.varzac.interceptor.SiteSwitcherHandlerInterceptor" />
 	</mvc:interceptors>
+	
+	<!-- 언어를 변경하기 위한 인터셉터 등록 -->
+	<bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+   		<property name="paramName" value="lang" />
+   	</bean>
+	<mvc:interceptors>
+    	<mvc:interceptor>
+    		<ref bean="localeChangeInterceptor"/>
+    	</mvc:interceptor>
+    </mvc:interceptors>
 </beans>
