@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout/default">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	
+</script>
+<body>
+	<th:block layout:fragment="content">
+		<div style="background-color: #efefef;">
+			<a href="/message/lang/i18n?lang=ko">한국어</a>
+			<a href="/message/lang/i18n?lang=en">영어</a>
+			<p th:text="|site.title : #{site.title}|" />
+			<p th:text="|site.count : #{site.count(첫번째)}|" />
+			<!-- 
+			<p>site.count : <spring:message code="site.count" arguments="첫번째" text="default text" /></p> 
+			<p>site.count using EL : <spring:message code="site.count" arguments="${siteCount}" text="default text" /></p> 
+			<p>not.exist : <spring:message code="not.exist" text="default text" /></p>
+			<p th:text="${fileUploadPath}"></p>
+			-->
+			<p th:text="${config.getProperty('file.upload.path')}"></p>
+		<div>
+	</th:block>
+</body>
+</html>
