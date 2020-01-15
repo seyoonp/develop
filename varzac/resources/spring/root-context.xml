@@ -58,4 +58,25 @@
 	<!-- 캐시설정을위한별도설정파일 선언
 	<bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean" p:config-location="classpath:cache/ehcache.xml"/>
 	-->
+	
+	<!-- Java Mail 발송을 위한 객체 -->
+	<bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="${varzac.smtp.host}"></property>
+		<property name="port" value="${varzac.smtp.port}"></property>
+		<property name="username" value="${varzac.smtp.id}"></property>
+		<property name="password" value="${varzac.smtp.pwd}"></property>
+		<property name="defaultEncoding" value="utf-8"></property>
+		<property name="javaMailProperties">
+         	<props>
+               <prop key="mail.transport.protocol">smtp</prop>
+               <prop key="mail.smtp.auth">true</prop>
+               <prop key="mail.smtp.starttls.enable">true</prop>
+               <prop key="mail.debug">true</prop>
+         	</props>
+		</property> 
+	</bean>
+	
+	<bean id="emailSender" class="com.varzac.util.EmailSender">
+		<constructor-arg name="javaMailSender" ref="javaMailSender"></constructor-arg>
+	</bean>
 </beans>

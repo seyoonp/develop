@@ -10,7 +10,7 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 
 
 /** SMTP 서버를 통해 이메일을 발송하는 클래스
- *  @author 방영호
+ *  @author 박세윤
  * */
 public class EmailSender
 {

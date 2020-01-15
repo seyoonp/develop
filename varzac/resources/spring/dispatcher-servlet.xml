@@ -121,8 +121,9 @@
 	   	</bean>
     </mvc:interceptors>
     
-	<!-- thymeleaf 에서도 환경설정 파일을 참조 가능하도록 처리 -->
+	<!-- thymeleaf 에서도 환경설정 파일을 참조 가능하도록 처리
 	<mvc:interceptors>
 		<bean class="com.varzac.interceptor.ConfigHandlerInterceptor" />
 	</mvc:interceptors>
+	-->
 </beans>
