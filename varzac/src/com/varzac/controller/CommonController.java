@@ -85,7 +85,7 @@ public class CommonController {
                 FileVo fileVo = new FileVo();
                 fileVo.setOrgFileName(multipartFile.getOriginalFilename());
                 fileVo.setSaveFileName(saveFileName);
-                fileVo.setSavePath(currentDate);
+                fileVo.setSavePath(saveFilePath);
                 commonService.insertFile(fileVo);
             }
             

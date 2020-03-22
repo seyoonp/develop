@@ -9,6 +9,7 @@ public class FileVo extends BaseVo {
 	private String fileIdx;
 	private String orgFileName;
 	private String saveFileName;
+	private String saveFullPath;
 	private String savePath;
 	private String useYn;
 }

@@ -18,12 +18,18 @@
 				<configuration>
 					<release>12</release>
 					<warSourceDirectory>webapp</warSourceDirectory>
+					<webXml>webapp/WEB-INF/web.xml</webXml>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
 	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <failOnMissingWebXml>false</failOnMissingWebXml>
+        <java.version>12</java.version>
     	<jackson.version>2.9.2</jackson.version>
+    	<security.version>4.2.7.RELEASE</security.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -196,5 +202,31 @@
             <artifactId>mail</artifactId>
             <version>1.4.7</version>
         </dependency>
-	</dependencies>
+        <!-- Security --> 
+        <dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>${security.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${security.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${security.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>${security.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<version>${security.version}</version>
+		</dependency>
+		</dependencies>
 </project>

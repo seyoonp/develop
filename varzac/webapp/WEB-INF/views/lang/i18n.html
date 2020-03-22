@@ -11,8 +11,8 @@
 <body>
 	<th:block layout:fragment="content">
 		<div style="background-color: #efefef;">
-			<a href="/message/lang/i18n?lang=ko">한국어</a>
-			<a href="/message/lang/i18n?lang=en">영어</a>
+			<a href="/message/i18n?lang=ko">한국어</a>
+			<a href="/message/i18n?lang=en">영어</a>
 			<p th:text="|site.title : #{site.title}|" />
 			<p th:text="|site.count : #{site.count(첫번째)}|" />
 			<!-- 
@@ -21,7 +21,6 @@
 			<p>not.exist : <spring:message code="not.exist" text="default text" /></p>
 			<p th:text="${fileUploadPath}"></p>
 			-->
-			<p th:text="${config.getProperty('file.upload.path')}"></p>
 		<div>
 	</th:block>
 </body>

@@ -29,8 +29,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		VALUES
 		(
 			#{orgFileName}
-			, #{saveFileName}
 			, #{saveFullPath}
+			, #{saveFileName}
 			, 0
 			, now()
 			, 0

@@ -74,4 +74,11 @@ public class LoginController {
 			model.addAttribute("memberVo", memberVo);
 		}
 	}
+	
+	@RequestMapping("/login/securityForm") 
+	public ModelAndView securityForm() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/login/securityForm");
+		return mv;
+	}
 }
