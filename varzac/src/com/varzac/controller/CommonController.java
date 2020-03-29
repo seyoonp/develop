@@ -89,6 +89,8 @@ public class CommonController {
             	Path source = Paths.get(saveFilePath + "\\" + saveFileName);
                 String mimeType = Files.probeContentType(source);
                 
+                // ex) image/png
+                
                 // TIKA MIME TYPE
                 String mimeTypeTika = new Tika().detect(saveFilePath + "\\" + saveFileName);
                 multipartFile.transferTo(file);

@@ -7,11 +7,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.varzac.service.BoardService;
 import com.varzac.vo.HelloVo;
 
-@Component
+@Controller
 public class BatchComponent {
 	
 	private static final Logger logger = LoggerFactory.getLogger(BatchComponent.class);
@@ -56,7 +58,8 @@ public class BatchComponent {
 	"0 15 10 ? * 6L 2002-2005" : 2002년부터 2005년까지 매월 마지막 금요일 아무 날이나 10:15:00 
 	"0 15 10 ? * 6#3" : 매월 3번째 금요일 아무 날이나 10:15:00
 	 */
-	//@Scheduled(cron="*/5 * * * * *")
+	@RequestMapping("/batch/sample")
+	//@Scheduled(cron="0/5 * * * * *")
     public void sample() {
 		List<HelloVo> list = boardService.searchBoard();
 		
