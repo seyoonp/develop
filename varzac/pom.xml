@@ -228,5 +228,11 @@
 			<artifactId>spring-security-test</artifactId>
 			<version>${security.version}</version>
 		</dependency>
-		</dependencies>
+		<!-- Tika -->
+		<dependency>
+		    <groupId>org.apache.tika</groupId>
+		    <artifactId>tika-core</artifactId>
+		    <version>1.18</version>
+		</dependency>
+	</dependencies>
 </project>

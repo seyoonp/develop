@@ -2,6 +2,9 @@ package com.varzac.controller;
 
 import java.io.File;
 import java.net.URLEncoder;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -9,11 +12,13 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import javax.activation.MimetypesFileTypeMap;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
+import org.apache.tika.Tika;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,7 +76,7 @@ public class CommonController {
             	
             	// 파일 확장자
             	String fileExt = FilenameUtils.getExtension(multipartFile.getOriginalFilename()).toLowerCase();
-            	
+
             	// 일자별 경로 만들고, 파일명 겹치지 않도록 리네임
     			String currentDate = Util.date.getCurrentDate("yyyyMMdd");
     			String currentFullDateTime = Util.date.getCurrentDate("YYYYMMddHHmmssSSS");
@@ -79,10 +84,23 @@ public class CommonController {
     			String saveFilePath = fileUploadPath + "\\" + currentDate;
     			
                 File file = new File(saveFilePath + "\\" + saveFileName);
+                
+                // 파일 MIMETYPE
+            	Path source = Paths.get(saveFilePath + "\\" + saveFileName);
+                String mimeType = Files.probeContentType(source);
+                
+                // TIKA MIME TYPE
+                String mimeTypeTika = new Tika().detect(saveFilePath + "\\" + saveFileName);
                 multipartFile.transferTo(file);
                 
+                logger.debug("### MIME Type = {}", mimeType);
+                logger.debug("### MIME Type Tika = {}", mimeTypeTika);
+                
+                // ex) mimeType.startsWith("image")
+
                 // 파일전송 성공 이후, 파일 테이블에 관련 정보 등록
                 FileVo fileVo = new FileVo();
+
                 fileVo.setOrgFileName(multipartFile.getOriginalFilename());
                 fileVo.setSaveFileName(saveFileName);
                 fileVo.setSavePath(saveFilePath);
