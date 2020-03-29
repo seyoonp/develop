@@ -1,6 +1,8 @@
 package com.varzac.controller;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.net.URLEncoder;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -89,10 +91,11 @@ public class CommonController {
             	Path source = Paths.get(saveFilePath + "\\" + saveFileName);
                 String mimeType = Files.probeContentType(source);
                 
-                // ex) image/png
+                // ex) 
                 
                 // TIKA MIME TYPE
-                String mimeTypeTika = new Tika().detect(saveFilePath + "\\" + saveFileName);
+                InputStream input = multipartFile.getInputStream();
+                String mimeTypeTika = new Tika().detect(input);
                 multipartFile.transferTo(file);
                 
                 logger.debug("### MIME Type = {}", mimeType);
