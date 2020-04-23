@@ -28,7 +28,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <failOnMissingWebXml>false</failOnMissingWebXml>
         <java.version>12</java.version>
-    	<jackson.version>2.9.2</jackson.version>
+    	<jackson.version>2.9.10.4</jackson.version>
     	<security.version>4.2.7.RELEASE</security.version>
 	</properties>
 	<dependencies>
