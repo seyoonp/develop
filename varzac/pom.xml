@@ -29,7 +29,7 @@
         <failOnMissingWebXml>false</failOnMissingWebXml>
         <java.version>12</java.version>
     	<jackson.version>2.9.2</jackson.version>
-    	<security.version>4.2.7.RELEASE</security.version>
+    	<security.version>5.2.10.RELEASE</security.version>
 	</properties>
 	<dependencies>
 		<dependency>
